@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="33557" />
-    <option name="todayTime" value="1869" />
+    <option name="idleTime" value="33567" />
+    <option name="todayTime" value="3006" />
     <option name="todayDateTime" value="1751317200000" />
     <option name="classTimeData">
       <map>
@@ -25,17 +25,21 @@
             <map>
               <entry key="ChoseSnack.kt" value="24" />
               <entry key="ChoseSnackScreen.kt" value="4" />
-              <entry key="DetailsScreen.kt" value="27" />
+              <entry key="CoffeModel.kt" value="16" />
+              <entry key="CoffeeModel.kt" value="64" />
+              <entry key="CoffeeSize.kt" value="43" />
+              <entry key="DetailsScreen.kt" value="70" />
               <entry key="HomeScreen.kt" value="30" />
               <entry key="LoadingOrder.kt" value="27" />
-              <entry key="LoadingOrderScreen.kt" value="6" />
-              <entry key="NavGraph.kt" value="443" />
+              <entry key="LoadingOrderScreen.kt" value="30" />
+              <entry key="MainActivity.kt" value="202" />
+              <entry key="NavGraph.kt" value="886" />
               <entry key="Navigation.kt" value="27" />
               <entry key="OnBoardingScreen.kt" value="58" />
               <entry key="OrderDone.kt" value="31" />
-              <entry key="OrderDoneScreen.kt" value="4" />
-              <entry key="Routes.kt" value="201" />
-              <entry key="SnackScreen.kt" value="45" />
+              <entry key="OrderDoneScreen.kt" value="7" />
+              <entry key="Routes.kt" value="387" />
+              <entry key="SnackScreen.kt" value="148" />
               <entry key="arrow_right_04.xml" value="3" />
               <entry key="build.gradle.kts" value="134" />
               <entry key="libs.versions.toml" value="338" />

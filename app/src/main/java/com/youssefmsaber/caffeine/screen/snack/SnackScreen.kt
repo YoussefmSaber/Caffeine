@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun SharedTransitionScope.SnackScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
+    imageId: Int,
     modifier: Modifier = Modifier
 ) {
 

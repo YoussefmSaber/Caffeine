@@ -1,5 +1,6 @@
 package com.youssefmsaber.caffeine.navigation
 
+import com.youssefmsaber.caffeine.model.CoffeeSize
 import kotlinx.serialization.Serializable
 
 object Routes {
@@ -10,17 +11,17 @@ object Routes {
     object Home
 
     @Serializable
-    object Details
+    data class Details(val imageId: Int, val name: String)
 
     @Serializable
-    object LoadingOrder
+    data class LoadingOrder(val imageId: Int, val size: CoffeeSize)
 
     @Serializable
-    object OrderDone
+    data class OrderDone(val imageId: Int, val size: CoffeeSize)
 
     @Serializable
     object ChoseSnack
 
     @Serializable
-    object Snack
+    data class Snack(val imageId: Int)
 }
