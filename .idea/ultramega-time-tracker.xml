@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="UltramegaTimeTracker">
+    <option name="idleTime" value="33557" />
+    <option name="todayTime" value="1869" />
+    <option name="todayDateTime" value="1751317200000" />
+    <option name="classTimeData">
+      <map>
+        <entry key="2025-07-01 17">
+          <value>
+            <map>
+              <entry key="MainActivity.kt" value="248" />
+              <entry key="black.png" value="2" />
+              <entry key="build.gradle.kts" value="126" />
+              <entry key="cinnamon_roll.png" value="62" />
+              <entry key="cookies.png" value="2" />
+              <entry key="cup_cover.png" value="2" />
+              <entry key="gradle.properties" value="7" />
+              <entry key="libs.versions.toml" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-01 18">
+          <value>
+            <map>
+              <entry key="ChoseSnack.kt" value="24" />
+              <entry key="ChoseSnackScreen.kt" value="4" />
+              <entry key="DetailsScreen.kt" value="27" />
+              <entry key="HomeScreen.kt" value="30" />
+              <entry key="LoadingOrder.kt" value="27" />
+              <entry key="LoadingOrderScreen.kt" value="6" />
+              <entry key="NavGraph.kt" value="443" />
+              <entry key="Navigation.kt" value="27" />
+              <entry key="OnBoardingScreen.kt" value="58" />
+              <entry key="OrderDone.kt" value="31" />
+              <entry key="OrderDoneScreen.kt" value="4" />
+              <entry key="Routes.kt" value="201" />
+              <entry key="SnackScreen.kt" value="45" />
+              <entry key="arrow_right_04.xml" value="3" />
+              <entry key="build.gradle.kts" value="134" />
+              <entry key="libs.versions.toml" value="338" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
