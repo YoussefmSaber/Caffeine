@@ -22,18 +22,18 @@ fun NavGraph(navController: NavHostController) {
     SharedTransitionLayout {
         NavHost(
             navController = navController,
-            startDestination = Routes.OnBoarding
+            startDestination = OnBoarding
         ) {
-            composable<Routes.OnBoarding> {
+            composable<OnBoarding> {
                 OnBoardingScreen(
                     animatedVisibilityScope = this@composable
                 )
             }
-            composable<Routes.Home> {
+            composable<Home> {
                 HomeScreen(animatedVisibilityScope = this@composable)
             }
-            composable<Routes.Details> {
-                val args = it.toRoute<Routes.Details>()
+            composable<Details> {
+                val args = it.toRoute<Details>()
                 val coffee = CoffeeModel(
                     imageId = args.imageId,
                     name = args.name
@@ -43,27 +43,27 @@ fun NavGraph(navController: NavHostController) {
                     coffee = coffee
                 )
             }
-            composable<Routes.LoadingOrder> {
-                val args = it.toRoute<Routes.LoadingOrder>()
+            composable<LoadingOrder> {
+                val args = it.toRoute<LoadingOrder>()
                 LoadingOrderScreen(
                     animatedVisibilityScope = this@composable,
                     coffeeImageId = args.imageId,
                     coffeeSize = args.size
                 )
             }
-            composable<Routes.OrderDone> {
-                val args = it.toRoute<Routes.OrderDone>()
+            composable<OrderDone> {
+                val args = it.toRoute<OrderDone>()
                 OrderDoneScreen(
                     animatedVisibilityScope = this@composable,
                     coffeeImageId = args.imageId,
                     coffeeSize = args.size
                 )
             }
-            composable<Routes.ChoseSnack> {
+            composable<ChoseSnack> {
                 ChoseSnackScreen(animatedVisibilityScope = this@composable)
             }
-            composable<Routes.Snack> {
-                val args = it.toRoute<Routes.Snack>()
+            composable<Snack> {
+                val args = it.toRoute<Snack>()
                 SnackScreen(
                     animatedVisibilityScope = this@composable,
                     imageId = args.imageId

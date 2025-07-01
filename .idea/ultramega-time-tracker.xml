@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="33567" />
-    <option name="todayTime" value="3006" />
+    <option name="idleTime" value="34639" />
+    <option name="totalRunTime" value="265728" />
+    <option name="todayTime" value="7019" />
     <option name="todayDateTime" value="1751317200000" />
     <option name="classTimeData">
       <map>
@@ -43,6 +44,33 @@
               <entry key="arrow_right_04.xml" value="3" />
               <entry key="build.gradle.kts" value="134" />
               <entry key="libs.versions.toml" value="338" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-01 19">
+          <value>
+            <map>
+              <entry key="ChoseSnackScreen.kt" value="1" />
+              <entry key="NavGraph.kt" value="86" />
+              <entry key="OnBoardingScreen.kt" value="1443" />
+              <entry key="OrderDoneScreen.kt" value="1" />
+              <entry key="Routes.kt" value="33" />
+              <entry key="SnackScreen.kt" value="17" />
+              <entry key="build.gradle.kts" value="141" />
+              <entry key="libs.versions.toml" value="5" />
+              <entry key="shadow.xml" value="9" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-01 20">
+          <value>
+            <map>
+              <entry key="Color.kt" value="8" />
+              <entry key="DropShadow.kt" value="62" />
+              <entry key="OnBoardingScreen.kt" value="2090" />
+              <entry key="Routes.kt" value="1" />
+              <entry key="coffee_02.xml" value="11" />
+              <entry key="shadow.xml" value="1" />
             </map>
           </value>
         </entry>

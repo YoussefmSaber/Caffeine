@@ -3,7 +3,6 @@ package com.youssefmsaber.caffeine.navigation
 import com.youssefmsaber.caffeine.model.CoffeeSize
 import kotlinx.serialization.Serializable
 
-object Routes {
     @Serializable
     object OnBoarding
 
@@ -24,4 +23,4 @@ object Routes {
 
     @Serializable
     data class Snack(val imageId: Int)
-}
+
