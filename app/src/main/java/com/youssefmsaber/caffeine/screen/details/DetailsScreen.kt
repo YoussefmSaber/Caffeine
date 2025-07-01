@@ -5,11 +5,13 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.youssefmsaber.caffeine.model.CoffeeModel
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun SharedTransitionScope.DetailsScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
+    coffee: CoffeeModel,
     modifier: Modifier = Modifier
 ) {
 
