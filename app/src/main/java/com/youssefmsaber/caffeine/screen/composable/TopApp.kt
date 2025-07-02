@@ -33,7 +33,7 @@ import com.youssefmsaber.caffeine.ui.theme.Urbanist
 fun TopApp(
     modifier: Modifier = Modifier,
     leading: @Composable (() -> Unit)? = null,
-    label: String = "",
+    label: @Composable (() -> Unit)? = null,
     trailing: @Composable (() -> Unit)? = null
 ) {
     Row(
@@ -49,17 +49,8 @@ fun TopApp(
         ) {
             if (leading != null)
                 leading()
-            BasicText(
-                text = label,
-                style = TextStyle(
-                    color = Color(0xDE1F1F1F),
-                    fontFamily = Urbanist,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    letterSpacing = 0.25.sp,
-                    textAlign = TextAlign.Center
-                )
-            )
+            if (label != null)
+                label()
         }
         if (trailing != null)
             trailing()
@@ -70,21 +61,37 @@ fun TopApp(
 @Composable
 fun TopAppPreview() {
     TopApp(
-        leading = {Image(
-            modifier = Modifier.size(48.dp),
-            painter = painterResource(R.drawable.pfp),
-            contentDescription = "Profile Image",
-        )},
-        label = "Macchiato",
-        trailing = {Icon(
-            modifier = Modifier
-                .clip(CircleShape)
-                .clickable {}
-                .size(48.dp)
-                .background(Gray)
-                .padding(12.dp),
-            imageVector = ImageVector.vectorResource(R.drawable.add_01),
-            contentDescription = ""
-        )}
+        leading = {
+            Image(
+                modifier = Modifier.size(48.dp),
+                painter = painterResource(R.drawable.pfp),
+                contentDescription = "Profile Image",
+            )
+        },
+        label = {
+            BasicText(
+                text = "Macchiato",
+                style = TextStyle(
+                    color = Color(0xDE1F1F1F),
+                    fontFamily = Urbanist,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    letterSpacing = 0.25.sp,
+                    textAlign = TextAlign.Center
+                )
+            )
+        },
+        trailing = {
+            Icon(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .clickable {}
+                    .size(48.dp)
+                    .background(Gray)
+                    .padding(12.dp),
+                imageVector = ImageVector.vectorResource(R.drawable.add_01),
+                contentDescription = ""
+            )
+        }
     )
 }

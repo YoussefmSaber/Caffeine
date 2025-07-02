@@ -67,7 +67,7 @@ fun SharedTransitionScope.HomeScreen(
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
-fun HomeScreenContent(
+private fun HomeScreenContent(
     sharedTransitionScope: SharedTransitionScope,
     animatedVisibilityScope: AnimatedVisibilityScope,
     onItemClick: (Int) -> Unit,

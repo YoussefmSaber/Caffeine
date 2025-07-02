@@ -75,7 +75,7 @@ fun SharedTransitionScope.OnBoardingScreen(
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
-fun OnBoardingContent(
+private fun OnBoardingContent(
     modifier: Modifier = Modifier,
     scope: SharedTransitionScope,
     navigateToHome: () -> Unit,

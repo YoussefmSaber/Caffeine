@@ -44,6 +44,9 @@ fun NavGraph(navController: NavHostController) {
                 DetailsScreen(
                     animatedVisibilityScope = this@composable,
                     coffeeId = args.coffeeId,
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    }
                 )
             }
             composable<LoadingOrder> {
