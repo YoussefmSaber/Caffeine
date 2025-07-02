@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
     object Home
 
     @Serializable
-    data class Details(val imageId: Int, val name: String)
+    data class Details(val coffeeId: Int)
 
     @Serializable
     data class LoadingOrder(val imageId: Int, val size: CoffeeSize)

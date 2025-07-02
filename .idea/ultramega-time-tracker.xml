@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="34639" />
-    <option name="totalRunTime" value="265728" />
-    <option name="todayTime" value="7019" />
-    <option name="todayDateTime" value="1751317200000" />
+    <option name="idleTime" value="35085" />
+    <option name="totalRunTime" value="447797" />
+    <option name="todayTime" value="4897" />
+    <option name="todayDateTime" value="1751403600000" />
     <option name="classTimeData">
       <map>
         <entry key="2025-07-01 17">
@@ -71,6 +71,58 @@
               <entry key="Routes.kt" value="1" />
               <entry key="coffee_02.xml" value="11" />
               <entry key="shadow.xml" value="1" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 06">
+          <value>
+            <map>
+              <entry key="CoffeeModel.kt" value="143" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 07">
+          <value>
+            <map>
+              <entry key="CoffeeCups.kt" value="65" />
+              <entry key="CoffeeModel.kt" value="27" />
+              <entry key="DetailsScreen.kt" value="7" />
+              <entry key="HomeScreen.kt" value="642" />
+              <entry key="NavGraph.kt" value="67" />
+              <entry key="OnBoardingScreen.kt" value="1578" />
+              <entry key="Routes.kt" value="16" />
+              <entry key="TopApp.kt" value="93" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 08">
+          <value>
+            <map>
+              <entry key="HomeScreen.kt" value="1378" />
+              <entry key="Pager.kt" value="3" />
+              <entry key="TopApp.kt" value="22" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 09">
+          <value>
+            <map>
+              <entry key="CoffeeModel.kt" value="1" />
+              <entry key="DetailsScreen.kt" value="5" />
+              <entry key="HomeScreen.kt" value="696" />
+              <entry key="NavGraph.kt" value="7" />
+              <entry key="OnBoardingScreen.kt" value="6" />
+              <entry key="TabPreviewDiffVirtualFile" value="2" />
+              <entry key="the_chance_coffe_big.xml" value="14" />
+              <entry key="the_chance_coffe_small.xml" value="13" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 10">
+          <value>
+            <map>
+              <entry key="HomeScreen.kt" value="82" />
+              <entry key="TopApp.kt" value="26" />
             </map>
           </value>
         </entry>

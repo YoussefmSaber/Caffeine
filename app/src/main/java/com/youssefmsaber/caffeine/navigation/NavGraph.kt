@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.youssefmsaber.caffeine.model.CoffeeModel
 import com.youssefmsaber.caffeine.screen.chose_snack.ChoseSnackScreen
 import com.youssefmsaber.caffeine.screen.details.DetailsScreen
 import com.youssefmsaber.caffeine.screen.home.HomeScreen
@@ -34,13 +33,9 @@ fun NavGraph(navController: NavHostController) {
             }
             composable<Details> {
                 val args = it.toRoute<Details>()
-                val coffee = CoffeeModel(
-                    imageId = args.imageId,
-                    name = args.name
-                )
                 DetailsScreen(
                     animatedVisibilityScope = this@composable,
-                    coffee = coffee
+                    coffeeId = args.coffeeId,
                 )
             }
             composable<LoadingOrder> {

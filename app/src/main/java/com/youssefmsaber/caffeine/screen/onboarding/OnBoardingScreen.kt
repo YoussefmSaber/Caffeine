@@ -1,5 +1,6 @@
 package com.youssefmsaber.caffeine.screen.onboarding
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
@@ -17,16 +18,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,6 +50,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.youssefmsaber.caffeine.R
+import com.youssefmsaber.caffeine.screen.composable.TopApp
 import com.youssefmsaber.caffeine.screen.modifier.dropShadow
 import com.youssefmsaber.caffeine.ui.theme.Gray
 import com.youssefmsaber.caffeine.ui.theme.Sniglet
@@ -58,16 +62,27 @@ fun SharedTransitionScope.OnBoardingScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
     modifier: Modifier = Modifier
 ) {
-    OnBoardingContent(modifier.windowInsetsPadding(WindowInsets.systemBars))
+    OnBoardingContent(
+        modifier = modifier
+            .background(Color.White)
+            .windowInsetsPadding(WindowInsets.systemBars),
+        this,
+        animatedVisibilityScope
+    )
 }
 
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
-fun OnBoardingContent(modifier: Modifier = Modifier) {
+fun OnBoardingContent(
+    modifier: Modifier = Modifier,
+    scope: SharedTransitionScope,
+    animatedVisibilityScope: AnimatedVisibilityScope
+) {
     val infiniteTransition = rememberInfiniteTransition(label = "Ghost Animation")
 
     val ghostAnimation by infiniteTransition.animateFloat(
         initialValue = 0f,
-        targetValue = -24f,
+        targetValue = -36f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 3000, easing = EaseInOut),
             repeatMode = RepeatMode.Reverse
@@ -89,95 +104,128 @@ fun OnBoardingContent(modifier: Modifier = Modifier) {
             repeatMode = RepeatMode.Reverse
         )
     )
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        TopApp(Modifier.padding(bottom = 8.dp))
-        Box(modifier = Modifier.padding(bottom = 33.dp)) {
-            BasicText(
-                text = "Hocus\n" +
-                        "Pocus\n" +
-                        "I Need Coffee\n" +
-                        "to Focus",
-                style = TextStyle(
-                    color = Color(0xDE1F1F1F),
-                    fontSize = 32.sp,
-                    letterSpacing = 0.25.sp,
-                    lineHeight = 50.sp,
-                    fontFamily = Sniglet,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Center
-                )
-            )
-            StarIcon(
-                color = starAnimation,
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .padding(start = 10.dp)
-                    .offset(y = -24.dp)
-                    .size(16.dp),
-            )
-            StarIcon(
-                color = starAnimation,
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .size(16.dp),
-            )
-            StarIcon(
-                color = starAnimation,
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .offset(x = 15.dp)
-                    .size(16.dp)
-            )
-        }
-        Image(
-            modifier = Modifier
-                .offset(y = ghostAnimation.dp)
-                .size(244.dp),
-            painter = painterResource(R.drawable.ghost),
-            contentDescription = "Ghost Image"
-        )
-        Icon(
-            modifier = Modifier
-                .blur(12.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded)
-                .padding(bottom = 59.dp),
-            imageVector = ImageVector.vectorResource(R.drawable.shadow),
-            contentDescription = "Ghost Shadow",
-            tint = shadowAnimation
-        )
-        Row(
-            modifier = Modifier
-                .dropShadow(
-                    shape = CircleShape,
-                    color = Color.Black.copy(0.24f),
-                    offsetY = 6.dp,
-                    offsetX = 0.dp,
-                    blur = 12.dp
-                )
-                .clip(CircleShape)
-                .background(Color(0xFF1f1f1f))
-                .padding(vertical = 16.dp, horizontal = 32.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+    with(scope) {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "bring my coffee",
-                style = TextStyle(
-                    color = Color(0xDEFFFFFF),
-                    fontSize = 16.sp,
-                    fontFamily = Urbanist,
-                    letterSpacing = 0.25.sp
+            TopApp(
+                Modifier.padding(bottom = 8.dp),
+                leading = {
+                    Image(
+                        modifier = Modifier.size(48.dp),
+                        painter = painterResource(R.drawable.pfp),
+                        contentDescription = "Profile Image",
+                    )
+                },
+                trailing = {
+                    Icon(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .clickable {}
+                            .size(48.dp)
+                            .background(Gray)
+                            .padding(12.dp),
+                        imageVector = ImageVector.vectorResource(R.drawable.add_01),
+                        contentDescription = ""
+                    )
+                }
+            )
+            Box(modifier = Modifier.padding(bottom = 42.dp)) {
+                BasicText(
+                    text = "Hocus\n" +
+                            "Pocus\n" +
+                            "I Need Coffee\n" +
+                            "to Focus",
+                    style = TextStyle(
+                        color = Color(0xDE1F1F1F),
+                        fontSize = 32.sp,
+                        letterSpacing = 0.25.sp,
+                        lineHeight = 50.sp,
+                        fontFamily = Sniglet,
+                        fontWeight = FontWeight.Normal,
+                        textAlign = TextAlign.Center
+                    )
                 )
+                StarIcon(
+                    color = starAnimation,
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 10.dp)
+                        .offset(y = -24.dp)
+                        .size(16.dp),
+                )
+                StarIcon(
+                    color = starAnimation,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .size(16.dp),
+                )
+                StarIcon(
+                    color = starAnimation,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .offset(x = 15.dp)
+                        .size(16.dp)
+                )
+            }
+            Image(
+                modifier = Modifier
+                    .offset(y = ghostAnimation.dp)
+                    .size(244.dp),
+                painter = painterResource(R.drawable.ghost),
+                contentDescription = "Ghost Image"
             )
             Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.coffee_02),
-                contentDescription = "Coffee Vector",
-                tint = Color(0xDEFFFFFF)
+                modifier = Modifier
+                    .blur(12.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+                imageVector = ImageVector.vectorResource(R.drawable.shadow),
+                contentDescription = "Ghost Shadow",
+                tint = shadowAnimation
             )
+            Spacer(modifier = Modifier.weight(1f))
+            Box(
+                Modifier
+                    .sharedElement(
+                        sharedContentState = rememberSharedContentState(key = "button/continue"),
+                        animatedVisibilityScope = animatedVisibilityScope
+                    )
+                    .padding(bottom = 50.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .dropShadow(
+                            shape = CircleShape,
+                            color = Color.Black.copy(0.24f),
+                            offsetY = 6.dp,
+                            offsetX = 0.dp,
+                            blur = 12.dp
+                        )
+                        .clip(CircleShape)
+                        .background(Color(0xFF1f1f1f))
+                        .padding(vertical = 16.dp, horizontal = 32.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "bring my coffee",
+                        style = TextStyle(
+                            color = Color(0xDEFFFFFF),
+                            fontSize = 16.sp,
+                            fontFamily = Urbanist,
+                            letterSpacing = 0.25.sp
+                        )
+                    )
+                    Icon(
+                        imageVector = ImageVector.vectorResource(R.drawable.coffee_02),
+                        contentDescription = "Coffee Vector",
+                        tint = Color(0xDEFFFFFF)
+                    )
+                }
+            }
         }
     }
 }
@@ -192,34 +240,12 @@ private fun StarIcon(modifier: Modifier, color: Color) {
     )
 }
 
-@Composable
-private fun TopApp(modifier: Modifier) {
-    Row(
-        modifier = modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Image(
-            modifier = Modifier.size(48.dp),
-            painter = painterResource(R.drawable.pfp),
-            contentDescription = "Profile Image",
-        )
-        Icon(
-            modifier = Modifier
-                .clip(CircleShape)
-                .clickable {}
-                .size(48.dp)
-                .background(Gray)
-                .padding(12.dp),
-            imageVector = ImageVector.vectorResource(R.drawable.add_01),
-            contentDescription = ""
-        )
-    }
-}
 
-@Preview(device = "spec:width=360dp,height=800dp")
+@OptIn(ExperimentalSharedTransitionApi::class)
+@Preview(device = "spec:width=360dp,height=600dp")
 @Composable
-fun OnBoardingPreview() {
-    OnBoardingContent()
+fun SharedTransitionScope.OnBoardingPreview() {
+    AnimatedVisibility(visible = true) {
+        OnBoardingContent(scope = this@OnBoardingPreview, animatedVisibilityScope = this)
+    }
 }
