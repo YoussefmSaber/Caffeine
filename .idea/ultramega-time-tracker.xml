@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="35334" />
-    <option name="totalRunTime" value="11932856" />
-    <option name="todayTime" value="6823" />
+    <option name="idleTime" value="42850" />
+    <option name="totalRunTime" value="21268225" />
+    <option name="todayTime" value="15879" />
     <option name="todayDateTime" value="1751403600000" />
     <option name="classTimeData">
       <map>
@@ -142,9 +142,72 @@
         <entry key="2025-07-02 13">
           <value>
             <map>
-              <entry key="DetailsScreen.kt" value="3" />
-              <entry key="NavGraph.kt" value="41" />
-              <entry key="TopApp.kt" value="2" />
+              <entry key="DetailsScreen.kt" value="127" />
+              <entry key="HomeScreen.kt" value="4" />
+              <entry key="NavGraph.kt" value="43" />
+              <entry key="OnBoardingScreen.kt" value="69" />
+              <entry key="TopApp.kt" value="7" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 15">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="531" />
+              <entry key="HomeScreen.kt" value="409" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 16">
+          <value>
+            <map>
+              <entry key="Color.kt" value="6" />
+              <entry key="DetailsScreen.kt" value="2197" />
+              <entry key="Font.kt" value="2" />
+              <entry key="HomeScreen.kt" value="141" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 17">
+          <value>
+            <map>
+              <entry key="CoffeeSize.kt" value="4" />
+              <entry key="DetailsScreen.kt" value="814" />
+              <entry key="DetailsViewModel.kt" value="31" />
+              <entry key="LoadingOrderScreen.kt" value="241" />
+              <entry key="NavGraph.kt" value="177" />
+              <entry key="SnackbarHost.kt" value="90" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 18">
+          <value>
+            <map>
+              <entry key="CoffeeSize.kt" value="130" />
+              <entry key="DetailsScreen.kt" value="1935" />
+              <entry key="DetailsViewModel.kt" value="1" />
+              <entry key="LoadingOrderScreen.kt" value="1" />
+              <entry key="black.png" value="1" />
+              <entry key="chocolate.png" value="2" />
+              <entry key="coffe.png" value="2" />
+              <entry key="cookies.png" value="1" />
+              <entry key="croissant.png" value="1" />
+              <entry key="cup_cover.png" value="1" />
+              <entry key="empty_cup.png" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 19">
+          <value>
+            <map>
+              <entry key="AnimatedBeanIcon.kt" value="8" />
+              <entry key="CoffeeLevel.kt" value="22" />
+              <entry key="CoffeeLevelItem.kt" value="98" />
+              <entry key="CoffeeSize.kt" value="10" />
+              <entry key="DetailsScreen.kt" value="1790" />
+              <entry key="DetailsViewModel.kt" value="59" />
+              <entry key="LoadingOrderScreen.kt" value="19" />
+              <entry key="SizeSwitchItem.kt" value="8" />
             </map>
           </value>
         </entry>

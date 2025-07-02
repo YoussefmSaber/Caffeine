@@ -46,6 +46,9 @@ fun NavGraph(navController: NavHostController) {
                     coffeeId = args.coffeeId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onOrderFinish = { coffeeId, coffeeSize ->
+                        navController.navigate(LoadingOrder(coffeeId, coffeeSize))
                     }
                 )
             }
@@ -53,7 +56,7 @@ fun NavGraph(navController: NavHostController) {
                 val args = it.toRoute<LoadingOrder>()
                 LoadingOrderScreen(
                     animatedVisibilityScope = this@composable,
-                    coffeeImageId = args.imageId,
+                    coffeeId = args.imageId,
                     coffeeSize = args.size
                 )
             }
