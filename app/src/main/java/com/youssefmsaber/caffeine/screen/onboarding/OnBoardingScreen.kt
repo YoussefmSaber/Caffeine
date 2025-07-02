@@ -60,14 +60,16 @@ import com.youssefmsaber.caffeine.ui.theme.Urbanist
 @Composable
 fun SharedTransitionScope.OnBoardingScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
+    navigateOnClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     OnBoardingContent(
         modifier = modifier
             .background(Color.White)
             .windowInsetsPadding(WindowInsets.systemBars),
-        this,
-        animatedVisibilityScope
+        scope = this,
+        animatedVisibilityScope = animatedVisibilityScope,
+        navigateToHome = navigateOnClick
     )
 }
 
@@ -76,6 +78,7 @@ fun SharedTransitionScope.OnBoardingScreen(
 fun OnBoardingContent(
     modifier: Modifier = Modifier,
     scope: SharedTransitionScope,
+    navigateToHome: () -> Unit,
     animatedVisibilityScope: AnimatedVisibilityScope
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "Ghost Animation")
@@ -189,14 +192,14 @@ fun OnBoardingContent(
             Spacer(modifier = Modifier.weight(1f))
             Box(
                 Modifier
-                    .sharedElement(
-                        sharedContentState = rememberSharedContentState(key = "button/continue"),
-                        animatedVisibilityScope = animatedVisibilityScope
-                    )
                     .padding(bottom = 50.dp)
             ) {
                 Row(
                     modifier = Modifier
+                        .sharedElement(
+                            sharedContentState = rememberSharedContentState(key = "button/continue"),
+                            animatedVisibilityScope = animatedVisibilityScope
+                        )
                         .dropShadow(
                             shape = CircleShape,
                             color = Color.Black.copy(0.24f),
@@ -206,7 +209,8 @@ fun OnBoardingContent(
                         )
                         .clip(CircleShape)
                         .background(Color(0xFF1f1f1f))
-                        .padding(vertical = 16.dp, horizontal = 32.dp),
+                        .padding(vertical = 16.dp, horizontal = 32.dp)
+                        .clickable(onClick = navigateToHome),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -246,6 +250,9 @@ private fun StarIcon(modifier: Modifier, color: Color) {
 @Composable
 fun SharedTransitionScope.OnBoardingPreview() {
     AnimatedVisibility(visible = true) {
-        OnBoardingContent(scope = this@OnBoardingPreview, animatedVisibilityScope = this)
+        OnBoardingContent(
+            scope = this@OnBoardingPreview,
+            animatedVisibilityScope = this,
+            navigateToHome = {})
     }
 }

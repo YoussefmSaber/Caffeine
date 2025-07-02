@@ -25,11 +25,19 @@ fun NavGraph(navController: NavHostController) {
         ) {
             composable<OnBoarding> {
                 OnBoardingScreen(
-                    animatedVisibilityScope = this@composable
+                    animatedVisibilityScope = this@composable,
+                    navigateOnClick = {
+                        navController.navigate(Home)
+                    }
                 )
             }
             composable<Home> {
-                HomeScreen(animatedVisibilityScope = this@composable)
+                HomeScreen(
+                    animatedVisibilityScope = this@composable,
+                    navigateToDetails = { coffeeId ->
+                        navController.navigate(Details(coffeeId))
+                    }
+                )
             }
             composable<Details> {
                 val args = it.toRoute<Details>()

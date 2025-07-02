@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="35085" />
-    <option name="totalRunTime" value="447797" />
-    <option name="todayTime" value="4897" />
+    <option name="idleTime" value="35334" />
+    <option name="totalRunTime" value="11808534" />
+    <option name="todayTime" value="6163" />
     <option name="todayDateTime" value="1751403600000" />
     <option name="classTimeData">
       <map>
@@ -121,8 +121,19 @@
         <entry key="2025-07-02 10">
           <value>
             <map>
-              <entry key="HomeScreen.kt" value="82" />
+              <entry key="HomeScreen.kt" value="90" />
               <entry key="TopApp.kt" value="26" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-02 12">
+          <value>
+            <map>
+              <entry key="AndroidManifest.xml" value="21" />
+              <entry key="CoffeeModel.kt" value="1" />
+              <entry key="HomeScreen.kt" value="934" />
+              <entry key="NavGraph.kt" value="100" />
+              <entry key="OnBoardingScreen.kt" value="200" />
             </map>
           </value>
         </entry>
