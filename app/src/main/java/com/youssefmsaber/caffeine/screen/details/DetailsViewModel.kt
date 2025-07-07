@@ -24,4 +24,23 @@ class DetailsViewModel : ViewModel() {
     fun setBeanLevel(level: CoffeeLevel) {
         _coffeeLevel.value = level
     }
+
+    fun isCoffeeVisible(
+        newSize: CoffeeSize,
+        newLevel: CoffeeLevel,
+        oldSize: CoffeeSize,
+        oldLevel: CoffeeLevel
+    ): Boolean {
+        return if ((newSize == CoffeeSize.Medium && oldSize == CoffeeSize.Small)
+            || (newLevel == CoffeeLevel.Medium && oldLevel == CoffeeLevel.Low)
+        ) {
+            true
+        } else if ((newSize == CoffeeSize.Large && (oldSize == CoffeeSize.Small || oldSize == CoffeeSize.Medium))
+            || (newLevel == CoffeeLevel.High && (oldLevel == CoffeeLevel.Low || oldLevel == CoffeeLevel.Medium))
+        ) {
+            true
+        } else {
+            false
+        }
+    }
 }

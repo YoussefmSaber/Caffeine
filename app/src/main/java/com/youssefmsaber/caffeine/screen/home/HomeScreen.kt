@@ -146,6 +146,7 @@ private fun HomeScreenContent(
                 state = horizontalPager,
                 contentPadding = PaddingValues(horizontal = 60.dp),
                 verticalAlignment = Alignment.Bottom,
+                beyondViewportPageCount = 3,
                 pageSpacing = (-60).dp
             ) { page ->
 
@@ -162,20 +163,25 @@ private fun HomeScreenContent(
                 ) {
                     Box(
                         modifier = Modifier
-                            .sharedElement(
-                                sharedContentState = rememberSharedContentState(key = "image/${page}"),
-                                animatedVisibilityScope = animatedVisibilityScope
-                            )
                             .scale(scale)
                             .offset(y = verticalOffset.dp)
                     ) {
                         Image(
-                            modifier = Modifier.size(300.dp),
+                            modifier = Modifier
+                                .sharedElement(
+                                    sharedContentState = rememberSharedContentState(key = "image/${page}"),
+                                    animatedVisibilityScope = animatedVisibilityScope
+                                )
+                                .size(300.dp),
                             painter = painterResource(coffeeCups[page].imageId),
                             contentDescription = "Coffee Cup"
                         )
                         Image(
                             modifier = Modifier
+                                .sharedElement(
+                                    sharedContentState = rememberSharedContentState(key = "logo/${page}"),
+                                    animatedVisibilityScope = animatedVisibilityScope
+                                )
                                 .align(Alignment.Center)
                                 .offset(y = 30.dp),
                             imageVector = ImageVector.vectorResource(R.drawable.the_chance_coffe_big),

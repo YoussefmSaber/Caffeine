@@ -56,16 +56,30 @@ fun NavGraph(navController: NavHostController) {
                 val args = it.toRoute<LoadingOrder>()
                 LoadingOrderScreen(
                     animatedVisibilityScope = this@composable,
-                    coffeeId = args.imageId,
-                    coffeeSize = args.size
+                    coffeeId = args.coffeeId,
+                    coffeeSize = args.size,
+                    onNavigate = {
+                        navController.navigate(
+                            OrderDone(
+                                coffeeId = args.coffeeId,
+                                size = args.size
+                            )
+                        )
+                    }
                 )
             }
             composable<OrderDone> {
                 val args = it.toRoute<OrderDone>()
                 OrderDoneScreen(
                     animatedVisibilityScope = this@composable,
-                    coffeeImageId = args.imageId,
-                    coffeeSize = args.size
+                    coffeeId = args.coffeeId,
+                    coffeeSize = args.size,
+                    onNavigateBack = {
+                        navController.navigate(Home)
+                    },
+                    onNavigateSnack = {
+                        navController.navigate(ChoseSnack)
+                    }
                 )
             }
             composable<ChoseSnack> {
@@ -75,7 +89,7 @@ fun NavGraph(navController: NavHostController) {
                 val args = it.toRoute<Snack>()
                 SnackScreen(
                     animatedVisibilityScope = this@composable,
-                    imageId = args.imageId
+                    imageId = args.snackId
                 )
             }
         }

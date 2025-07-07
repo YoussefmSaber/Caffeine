@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="42850" />
-    <option name="totalRunTime" value="21268225" />
-    <option name="todayTime" value="15879" />
-    <option name="todayDateTime" value="1751403600000" />
+    <option name="idleTime" value="54361" />
+    <option name="totalRunTime" value="30521104" />
+    <option name="totalDebugTime" value="50538" />
+    <option name="todayTime" value="6647" />
+    <option name="todayDateTime" value="1751835600000" />
     <option name="classTimeData">
       <map>
         <entry key="2025-07-01 17">
@@ -206,8 +207,200 @@
               <entry key="CoffeeSize.kt" value="10" />
               <entry key="DetailsScreen.kt" value="1790" />
               <entry key="DetailsViewModel.kt" value="59" />
-              <entry key="LoadingOrderScreen.kt" value="19" />
+              <entry key="LoadingOrderScreen.kt" value="96" />
               <entry key="SizeSwitchItem.kt" value="8" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-03 11">
+          <value>
+            <map>
+              <entry key="CoffeeLevelItem.kt" value="1" />
+              <entry key="LoadingOrderScreen.kt" value="208" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-03 14">
+          <value>
+            <map>
+              <entry key="DropShadow.kt" value="5" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-03 15">
+          <value>
+            <map>
+              <entry key="DropShadow.kt" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-04 10">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="1091" />
+              <entry key="DropShadow.kt" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-04 11">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-04 18">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="142" />
+              <entry key="NavGraph.kt" value="10" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-05 20">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="4" />
+              <entry key="loading.xml" value="119" />
+              <entry key="magic_wand_01.xml" value="1" />
+              <entry key="shadow.xml" value="3" />
+              <entry key="star.xml" value="1" />
+              <entry key="the_chance_coffe_big.xml" value="4" />
+              <entry key="the_chance_coffe_small.xml" value="3" />
+              <entry key="tick_02.xml" value="2" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-05 22">
+          <value>
+            <map>
+              <entry key="CoffeeLevel.kt" value="4" />
+              <entry key="CoffeeSize.kt" value="9" />
+              <entry key="DetailsScreen.kt" value="465" />
+              <entry key="DetailsViewModel.kt" value="71" />
+              <entry key="Enum.kt" value="8" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-05 23">
+          <value>
+            <map>
+              <entry key="Color.kt" value="2" />
+              <entry key="DetailsScreen.kt" value="797" />
+              <entry key="DetailsViewModel.kt" value="350" />
+              <entry key="LoadingOrderScreen.kt" value="2209" />
+              <entry key="NavGraph.kt" value="132" />
+              <entry key="OnBoardingScreen.kt" value="11" />
+              <entry key="column.xml" value="10" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-06 00">
+          <value>
+            <map>
+              <entry key="LoadingOrderScreen.kt" value="129" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-06 15">
+          <value>
+            <map>
+              <entry key="LoadingOrderScreen.kt" value="59" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-06 16">
+          <value>
+            <map>
+              <entry key="LoadingOrderScreen.kt" value="80" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 10">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="119" />
+              <entry key="LoadingOrderScreen.kt" value="53" />
+              <entry key="NavGraph.kt" value="4" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 11">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="23" />
+              <entry key="NavGraph.kt" value="1" />
+              <entry key="OnBoardingScreen.kt" value="1" />
+              <entry key="OrderDoneScreen.kt" value="170" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 12">
+          <value>
+            <map>
+              <entry key="Color.kt" value="3" />
+              <entry key="OrderDoneScreen.kt" value="1050" />
+              <entry key="black.png" value="1" />
+              <entry key="cinnamon_roll.png" value="1" />
+              <entry key="coffe.png" value="1" />
+              <entry key="croissant.png" value="1" />
+              <entry key="cup_cover.png" value="1" />
+              <entry key="empty_cup.png" value="1" />
+              <entry key="ghost.png" value="1" />
+              <entry key="oreo.png" value="1" />
+              <entry key="pfp.png" value="8" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 13">
+          <value>
+            <map>
+              <entry key="Black_top.png" value="1" />
+              <entry key="CoffeeCups.kt" value="101" />
+              <entry key="CoffeeLevel.kt" value="6" />
+              <entry key="CoffeeModel.kt" value="54" />
+              <entry key="CoffeeSize.kt" value="8" />
+              <entry key="DetailsScreen.kt" value="72" />
+              <entry key="LoadingOrderScreen.kt" value="43" />
+              <entry key="Macchiato_top.png" value="3" />
+              <entry key="NavGraph.kt" value="104" />
+              <entry key="OrderDoneScreen.kt" value="235" />
+              <entry key="Routes.kt" value="15" />
+              <entry key="black_top.png" value="17" />
+              <entry key="empty_cup.png" value="6" />
+              <entry key="macchiato_top.png" value="17" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 14">
+          <value>
+            <map>
+              <entry key="DetailsScreen.kt" value="463" />
+              <entry key="HomeScreen.kt" value="225" />
+              <entry key="LoadingOrderScreen.kt" value="181" />
+              <entry key="NavGraph.kt" value="16" />
+              <entry key="OrderDoneScreen.kt" value="1138" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 15">
+          <value>
+            <map>
+              <entry key="AnimateAlignment.kt" value="121" />
+              <entry key="DetailsScreen.kt" value="17" />
+              <entry key="OrderDoneScreen.kt" value="1251" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 16">
+          <value>
+            <map>
+              <entry key="AnimateAlignment.kt" value="50" />
+              <entry key="DetailsScreen.kt" value="7" />
+              <entry key="HomeScreen.kt" value="108" />
+              <entry key="NavGraph.kt" value="43" />
+              <entry key="OrderDoneScreen.kt" value="842" />
+              <entry key="SharedTransitionScope.kt" value="42" />
             </map>
           </value>
         </entry>
