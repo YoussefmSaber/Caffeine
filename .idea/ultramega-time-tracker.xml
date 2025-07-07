@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="55163" />
-    <option name="totalRunTime" value="36266875" />
+    <option name="idleTime" value="55524" />
+    <option name="totalRunTime" value="36533311" />
     <option name="totalDebugTime" value="50538" />
-    <option name="todayTime" value="13956" />
+    <option name="todayTime" value="15119" />
     <option name="todayDateTime" value="1751835600000" />
     <option name="classTimeData">
       <map>
@@ -445,7 +445,20 @@
         <entry key="2025-07-07 20">
           <value>
             <map>
-              <entry key="NavGraph.kt" value="3" />
+              <entry key="NavGraph.kt" value="8" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 21">
+          <value>
+            <map>
+              <entry key="ChoseSnackScreen.kt" value="60" />
+              <entry key="HomeScreen.kt" value="28" />
+              <entry key="NavGraph.kt" value="45" />
+              <entry key="OnBoardingScreen.kt" value="136" />
+              <entry key="OrderDoneScreen.kt" value="8" />
+              <entry key="SnackScreen.kt" value="869" />
+              <entry key="magic_wand_01.xml" value="9" />
             </map>
           </value>
         </entry>

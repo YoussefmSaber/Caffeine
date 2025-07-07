@@ -21,7 +21,7 @@ fun NavGraph(navController: NavHostController) {
     SharedTransitionLayout {
         NavHost(
             navController = navController,
-            startDestination = ChoseSnack
+            startDestination = OnBoarding
         ) {
             composable<OnBoarding> {
                 OnBoardingScreen(
@@ -101,7 +101,14 @@ fun NavGraph(navController: NavHostController) {
                 val args = it.toRoute<Snack>()
                 SnackScreen(
                     animatedVisibilityScope = this@composable,
-                    imageId = args.snackImageId
+                    imageId = args.snackImageId,
+                    onNavigateBack = {
+                        navController.navigate(Home) {
+                            popUpTo(Home) {
+                                inclusive = true
+                            }
+                        }
+                    }
                 )
             }
         }

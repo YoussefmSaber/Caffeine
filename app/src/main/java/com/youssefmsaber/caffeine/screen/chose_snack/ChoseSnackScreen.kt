@@ -131,13 +131,11 @@ fun ChooseSnackContent(
             val pageOffsetFraction =
                 (verticalPager.currentPage - snackId) + verticalPager.currentPageOffsetFraction
 
-            val rotate =
-                lerp(
+            val rotate = lerp(
                     if (pageOffsetFraction < 0f) -8f else if (pageOffsetFraction > 0) -8f else 0f,
                     0f,
                     1f - pageOffsetFraction.coerceIn(-2f, 1f)
                 )
-
             val offsetX = lerp(
                 start = if (pageOffsetFraction < 0f) ((pageOffsetFraction.absoluteValue).pow(3) * -64f)
                 else if (pageOffsetFraction > 0) ((pageOffsetFraction.absoluteValue).pow(3) * -64)
@@ -145,15 +143,16 @@ fun ChooseSnackContent(
                 stop = -32f,
                 fraction = 1f - pageOffsetFraction.absoluteValue.coerceIn(-1f, 1f)
             )
-
             val offsetY = lerp(
                 start = ((pageOffsetFraction.absoluteValue).pow(3) * 64f),
                 stop = -0f,
                 fraction = 1f - pageOffsetFraction.absoluteValue.coerceIn(-1f, 1f)
             )
-
-            val scale = lerp(0.8f, 1f, 1f - pageOffsetFraction.coerceIn(-1f, 1f))
-
+            val scale = lerp(
+                start = 0.8f,
+                stop = 1f,
+                fraction = 1f - pageOffsetFraction.coerceIn(-1f, 1f)
+            )
 
             SnackItem(
                 modifier = Modifier

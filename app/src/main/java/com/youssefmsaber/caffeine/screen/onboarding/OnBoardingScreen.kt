@@ -184,6 +184,7 @@ private fun OnBoardingContent(
             )
             Icon(
                 modifier = Modifier
+                    .offset(y = -(ghostAnimation/2).dp)
                     .blur(12.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
                 imageVector = ImageVector.vectorResource(R.drawable.shadow),
                 contentDescription = "Ghost Shadow",
