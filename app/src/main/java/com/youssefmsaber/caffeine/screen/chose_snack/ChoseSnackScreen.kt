@@ -57,11 +57,13 @@ import kotlin.math.pow
 @Composable
 fun SharedTransitionScope.ChoseSnackScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
+    onCloseClick: () -> Unit,
     onSnackChosen: (Int) -> Unit,
 ) {
     ChooseSnackContent(
         animatedVisibilityScope = animatedVisibilityScope,
         sharedTransitionScope = this,
+        onCloseClick = onCloseClick,
         onSnackClick = onSnackChosen
     )
 }
@@ -71,6 +73,7 @@ fun SharedTransitionScope.ChoseSnackScreen(
 fun ChooseSnackContent(
     sharedTransitionScope: SharedTransitionScope,
     animatedVisibilityScope: AnimatedVisibilityScope,
+    onCloseClick: () -> Unit,
     onSnackClick: (Int) -> Unit,
 ) {
     val verticalPager = rememberPagerState(initialPage = 1) { snacks.size }
@@ -87,6 +90,7 @@ fun ChooseSnackContent(
                 Icon(
                     modifier = Modifier
                         .clip(CircleShape)
+                        .clickable(onClick = onCloseClick)
                         .size(48.dp)
                         .background(Gray)
                         .padding(12.dp),
@@ -197,7 +201,8 @@ fun SnackItem(
                         sharedContentState = rememberSharedContentState(key = "snack/${snackImageId}"),
                         animatedVisibilityScope = animatedVisibilityScope
                     )
-                    .height(149.dp).offset(x = 16.dp),
+                    .height(149.dp)
+                    .offset(x = 16.dp),
                 painter = painterResource(snackImageId),
                 contentDescription = "Snack Image"
             )

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="54386" />
-    <option name="totalRunTime" value="33954835" />
+    <option name="idleTime" value="55163" />
+    <option name="totalRunTime" value="36266875" />
     <option name="totalDebugTime" value="50538" />
-    <option name="todayTime" value="12784" />
+    <option name="todayTime" value="13956" />
     <option name="todayDateTime" value="1751835600000" />
     <option name="classTimeData">
       <map>
@@ -430,8 +430,22 @@
         <entry key="2025-07-07 19">
           <value>
             <map>
-              <entry key="ChoseSnackScreen.kt" value="1204" />
-              <entry key="HomeScreen.kt" value="9" />
+              <entry key="ChoseSnackScreen.kt" value="1825" />
+              <entry key="DropShadow.kt" value="3" />
+              <entry key="HomeScreen.kt" value="27" />
+              <entry key="LoadingOrderScreen.kt" value="8" />
+              <entry key="NavGraph.kt" value="376" />
+              <entry key="OrderDoneScreen.kt" value="108" />
+              <entry key="Routes.kt" value="9" />
+              <entry key="SnackScreen.kt" value="18" />
+              <entry key="Snacks.kt" value="1" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 20">
+          <value>
+            <map>
+              <entry key="NavGraph.kt" value="3" />
             </map>
           </value>
         </entry>

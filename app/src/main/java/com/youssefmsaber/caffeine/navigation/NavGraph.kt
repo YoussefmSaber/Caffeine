@@ -87,6 +87,13 @@ fun NavGraph(navController: NavHostController) {
                     animatedVisibilityScope = this@composable,
                     onSnackChosen = {
                         navController.navigate(Snack(it))
+                    },
+                    onCloseClick = {
+                        navController.navigate(Home) {
+                            popUpTo(Home) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
