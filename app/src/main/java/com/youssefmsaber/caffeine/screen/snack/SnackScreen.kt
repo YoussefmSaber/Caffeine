@@ -198,7 +198,6 @@ fun SnackScreenContent(
                 }
             }
         }
-
     }
 }
 

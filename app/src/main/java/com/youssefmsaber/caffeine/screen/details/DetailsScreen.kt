@@ -6,9 +6,14 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.core.EaseIn
 import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
@@ -40,10 +45,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
@@ -57,6 +66,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.youssefmsaber.caffeine.R
@@ -70,6 +80,7 @@ import com.youssefmsaber.caffeine.screen.details.composable.SizeSwitchItem
 import com.youssefmsaber.caffeine.screen.modifier.dropShadow
 import com.youssefmsaber.caffeine.ui.theme.Gray
 import com.youssefmsaber.caffeine.ui.theme.Urbanist
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
@@ -104,9 +115,6 @@ private fun DetailsScreenContent(
     val selectedSize by viewModel.selectedSize.collectAsState()
     val coffeeLevel by viewModel.coffeeLevel.collectAsState()
 
-    val previousSize = remember { mutableStateOf(selectedSize) }
-    val previousLevel = remember { mutableStateOf(coffeeLevel) }
-
     val sizeAmount = viewModel.getAmount(selectedSize)
     val coffeeScaleAnimation by animateFloatAsState(
         targetValue = when (selectedSize) {
@@ -119,21 +127,9 @@ private fun DetailsScreenContent(
             easing = EaseIn
         )
     )
-    val showBeans by remember(selectedSize, coffeeLevel) {
-        mutableStateOf(
-            viewModel.isCoffeeVisible(
-                newSize = selectedSize,
-                newLevel = coffeeLevel,
-                oldSize = previousSize.value,
-                oldLevel = previousLevel.value
-            )
-        )
-    }
-
-    LaunchedEffect(selectedSize, coffeeLevel) {
-        previousSize.value = selectedSize
-        previousLevel.value = coffeeLevel
-    }
+    val slideCoffeeDown = remember { mutableStateListOf<Int>() }
+    val slideCoffeeUp = remember { mutableStateListOf<Int>() }
+    var coffeeAdded = 1
 
     with(sharedTransitionScope) {
         Box(
@@ -142,10 +138,18 @@ private fun DetailsScreenContent(
                 .windowInsetsPadding(WindowInsets.systemBars)
                 .fillMaxSize(),
         ) {
-            AnimatedCoffeeImage(
-                modifier = Modifier.align(Alignment.TopCenter),
-                isVisible = showBeans
-            )
+            slideCoffeeDown.forEach {
+                AnimatedCoffeeImage(
+                    isReverse = false,
+                    modifier = Modifier.align(Alignment.TopCenter)
+                )
+            }
+            slideCoffeeUp.forEach {
+                AnimatedCoffeeImage(
+                    isReverse = true,
+                    modifier = Modifier.align(Alignment.TopCenter)
+                )
+            }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -243,7 +247,17 @@ private fun DetailsScreenContent(
                         SizeSwitchItem(
                             size = size,
                             isSelected = size == selectedSize,
-                            onClick = { viewModel.onSizeSelected(size) }
+                            onClick = {
+                                if (size == CoffeeSize.Medium && selectedSize == CoffeeSize.Small
+                                    || size == CoffeeSize.Large && (selectedSize == CoffeeSize.Small || selectedSize == CoffeeSize.Medium)
+                                ) {
+                                    slideCoffeeDown.add(coffeeAdded)
+                                } else if (size == selectedSize) {
+                                } else {
+                                    slideCoffeeUp.add(coffeeAdded)
+                                }
+                                viewModel.onSizeSelected(size)
+                            }
                         )
                     }
                 }
@@ -259,6 +273,14 @@ private fun DetailsScreenContent(
                         AnimatedBeanIcon(
                             isSelected = coffeeLevel == level,
                             onClick = {
+                                if (level == CoffeeLevel.Medium && coffeeLevel == CoffeeLevel.Low
+                                    || level == CoffeeLevel.High && (coffeeLevel == CoffeeLevel.Low || coffeeLevel == CoffeeLevel.Medium)
+                                ) {
+                                    slideCoffeeDown.add(coffeeAdded)
+                                } else if (level == coffeeLevel) {
+                                } else {
+                                    slideCoffeeUp.add(coffeeAdded)
+                                }
                                 viewModel.setBeanLevel(level)
                             }
                         )
@@ -322,41 +344,67 @@ private fun DetailsScreenContent(
 
 @Composable
 fun AnimatedCoffeeImage(
-    isVisible: Boolean,
+    isReverse: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val transition = updateTransition(targetState = isVisible, label = "ImageTransition")
-
-    val offsetY by transition.animateDp(
-        transitionSpec = { tween(durationMillis = 800, easing = EaseInOut) },
-        label = "OffsetY"
-    ) { visible ->
-        if (visible) 120.dp else (-300).dp // Slide from -300dp (above screen)
+    var startAnimation by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        startAnimation = true
     }
+    val offsetY by animateDpAsState(
+        targetValue = if (!startAnimation) {
+            if (isReverse)
+                120.dp
+            else
+                (-300).dp
+        } else {
+            if (isReverse)
+                (-300).dp
+            else
+                120.dp
+        },
+        animationSpec = tween(800, easing = EaseOut),
+    )
 
-    val scale by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = 800, easing = EaseInOut) },
-        label = "Scale"
-    ) { visible ->
-        if (visible) 0.5f else 1.25f // Scale down from 1.5x to 1x
-    }
+    val scale by animateFloatAsState(
+        targetValue = if (!startAnimation) {
+            if (isReverse)
+                0.75f
+            else
+                1.25f
+        } else {
+            if (isReverse)
+                1.25f
+            else
+                0.75f
+        },
+        animationSpec = tween(800, easing = EaseOut),
+    )
 
-    val alpha by transition.animateFloat(
-        transitionSpec = { tween(durationMillis = 800, easing = EaseInOut) },
-        label = "Alpha"
-    ) { visible ->
-        if (visible) 0f else 1f // Fade out when not visible
-    }
+    val alpha by animateFloatAsState(
+        targetValue = if (!startAnimation) {
+            if (isReverse)
+                0f
+            else
+                1f
+        } else {
+            if (isReverse)
+                1f
+            else
+                0f
+        },
+        animationSpec = tween(800, easing = EaseOut),
+    )
 
     Image(
         painter = painterResource(R.drawable.coffe),
         contentDescription = "Coffee seeds",
         modifier = modifier
             .offset(y = offsetY)
+            .alpha(alpha)
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
-                this.alpha = alpha
             }
     )
 }

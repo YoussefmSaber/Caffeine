@@ -120,6 +120,10 @@ private fun OrderDoneContent(
         targetValue = if (!startAnimation) (-320).dp else 0.dp,
         animationSpec = tween(1000, easing = EaseInOut)
     )
+    val animateButtonPosition by animateDpAsState(
+        targetValue = if (!startAnimation) 100.dp else 0.dp,
+        animationSpec = tween(1000, easing = EaseInOut)
+    )
     val animateTakeAwayPosition by animateAlignmentAsState(
         targetAlignment = if (takeAway) Alignment.CenterStart else Alignment.CenterEnd
     )
@@ -132,217 +136,218 @@ private fun OrderDoneContent(
         animationSpec = tween(800, easing = EaseInCubic)
     )
     with(sharedTransitionScope) {
-    Column(
-        modifier = modifier
-            .background(Color.White)
-            .windowInsetsPadding(WindowInsets.systemBars)
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        TopApp(
-            modifier = Modifier.padding(16.dp),
-            leading = {
-                Icon(
-                    modifier = Modifier
-                        .offset(y = animateClosePosition)
-                        .clip(CircleShape)
-                        .clickable(onClick = onNavigateBack)
-                        .size(48.dp)
-                        .background(Gray)
-                        .padding(12.dp),
-                    imageVector = ImageVector.vectorResource(R.drawable.cancel_01),
-                    contentDescription = ""
-                )
-            }
-        )
         Column(
-            modifier = Modifier
-                .padding(top = 32.dp)
-                .offset(y = animateTextPosition),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(24.dp)
-        ) {
-            Icon(
-                modifier = Modifier
-                    .dropShadow(
-                        CircleShape,
-                        color = Color(0x80B94B23),
-                        offsetX = 0.dp,
-                        offsetY = 6.dp,
-                        blur = 16.dp
-                    )
-                    .clip(CircleShape)
-                    .clickable(onClick = onNavigateBack)
-                    .size(56.dp)
-                    .background(Brown)
-                    .padding(12.dp),
-                imageVector = ImageVector.vectorResource(R.drawable.tick_02),
-                contentDescription = "",
-                tint = Color(0xDEFFFFFF)
-            )
-            BasicText(
-                text = "Your coffee is ready,\n" +
-                        "Enjoy",
-                style = TextStyle(
-                    fontFamily = Urbanist,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp,
-                    letterSpacing = 0.25.sp,
-                    color = Color(0xDE1F1F1F),
-                    textAlign = TextAlign.Center
-                )
-            )
-        }
-        Box(
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .height(341.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                modifier = Modifier
-                        .sharedElement(
-                            sharedContentState = rememberSharedContentState(key = "image/${coffeeId}"),
-                            animatedVisibilityScope = animatedVisibilityScope,
-                        )
-                    .size(300.dp)
-                    .scale(coffeeScale),
-                painter = painterResource(coffeeCups[coffeeId].emptyCup),
-                contentDescription = "Coffee Cup image"
-            )
-            Image(
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .width(270.dp)
-                    .height(70.dp)
-                    .scale(coffeeScale)
-                    .offset(y = animateCoffeeCoverOffset),
-                painter = painterResource(coffeeCups[coffeeId].cupCover),
-                contentDescription = "Coffee Cup Cover",
-            )
-            Image(
-                modifier = Modifier
-                        .sharedElement(
-                            sharedContentState = rememberSharedContentState(key = "logo/${coffeeId}"),
-                            animatedVisibilityScope = animatedVisibilityScope
-                        )
-                    .offset(y = 15.dp)
-                    .scale(coffeeScale),
-                imageVector = ImageVector.vectorResource(R.drawable.the_chance_coffe_big),
-                contentDescription = "Big Coffee Image",
-            )
-        }
-        Spacer(modifier = Modifier.weight(1f))
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = modifier
+                .background(Color.White)
+                .windowInsetsPadding(WindowInsets.systemBars)
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    Modifier
-                        .clip(CircleShape)
-                        .height(41.dp)
-                        .width(78.dp)
-                        .background(animateColor)
-                        .padding(1.dp)
-                        .clickable(onClick = {
-                            takeAway = !takeAway
-                        })
-                ) {
-                    Row(
+            TopApp(
+                modifier = Modifier.padding(16.dp),
+                leading = {
+                    Icon(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(horizontal = 14.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        BasicText(
-                            text = "OFF",
-                            style = TextStyle(
-                                color = Color(0x991F1F1F),
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = Urbanist,
-                                letterSpacing = 0.25.sp
-                            )
-                        )
-                        BasicText(
-                            text = "ON",
-                            style = TextStyle(
-                                color = Color(0x99FFFFFF),
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 10.sp,
-                                letterSpacing = 0.25.sp
-                            )
-                        )
-                    }
-                    Image(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .rotate(animateRotation)
-                            .align(animateTakeAwayPosition),
-                        painter = painterResource(coffeeCups[coffeeId].cupTop),
-                        contentDescription = "Coffee Top"
+                            .offset(y = animateClosePosition)
+                            .clip(CircleShape)
+                            .clickable(onClick = onNavigateBack)
+                            .size(48.dp)
+                            .background(Gray)
+                            .padding(12.dp),
+                        imageVector = ImageVector.vectorResource(R.drawable.cancel_01),
+                        contentDescription = ""
                     )
                 }
+            )
+            Column(
+                modifier = Modifier
+                    .padding(top = 32.dp)
+                    .offset(y = animateTextPosition),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(24.dp)
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .dropShadow(
+                            CircleShape,
+                            color = Color(0x80B94B23),
+                            offsetX = 0.dp,
+                            offsetY = 6.dp,
+                            blur = 16.dp
+                        )
+                        .clip(CircleShape)
+                        .clickable(onClick = onNavigateBack)
+                        .size(56.dp)
+                        .background(Brown)
+                        .padding(12.dp),
+                    imageVector = ImageVector.vectorResource(R.drawable.tick_02),
+                    contentDescription = "",
+                    tint = Color(0xDEFFFFFF)
+                )
                 BasicText(
-                    "Take Away",
+                    text = "Your coffee is ready,\n" +
+                            "Enjoy",
                     style = TextStyle(
-                        color = Color(0xB31F1F1F),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
                         fontFamily = Urbanist,
-                        letterSpacing = 0.25.sp
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp,
+                        letterSpacing = 0.25.sp,
+                        color = Color(0xDE1F1F1F),
+                        textAlign = TextAlign.Center
                     )
                 )
             }
             Box(
-                Modifier
-                    .padding(bottom = 50.dp)
-                    .align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .fillMaxWidth()
+                    .height(341.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Row(
+                Image(
                     modifier = Modifier
                         .sharedElement(
-                            sharedContentState = rememberSharedContentState(key = "button/continue"),
+                            sharedContentState = rememberSharedContentState(key = "image/${coffeeId}"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                        )
+                        .size(300.dp)
+                        .scale(coffeeScale),
+                    painter = painterResource(coffeeCups[coffeeId].emptyCup),
+                    contentDescription = "Coffee Cup image"
+                )
+                Image(
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .width(270.dp)
+                        .height(70.dp)
+                        .scale(coffeeScale)
+                        .offset(y = animateCoffeeCoverOffset),
+                    painter = painterResource(coffeeCups[coffeeId].cupCover),
+                    contentDescription = "Coffee Cup Cover",
+                )
+                Image(
+                    modifier = Modifier
+                        .sharedElement(
+                            sharedContentState = rememberSharedContentState(key = "logo/${coffeeId}"),
                             animatedVisibilityScope = animatedVisibilityScope
                         )
-                        .dropShadow(
-                            shape = CircleShape,
-                            color = Color.Black.copy(0.24f),
-                            offsetY = 6.dp,
-                            offsetX = 0.dp,
-                            blur = 12.dp
-                        )
-                        .clip(CircleShape)
-                        .background(Color(0xFF1f1f1f))
-                        .padding(vertical = 16.dp, horizontal = 32.dp)
-                        .clickable(onClick = onNavigateSnack),
+                        .offset(y = 15.dp)
+                        .scale(coffeeScale),
+                    imageVector = ImageVector.vectorResource(R.drawable.the_chance_coffe_big),
+                    contentDescription = "Big Coffee Image",
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = "Take snack",
+                    Box(
+                        Modifier
+                            .clip(CircleShape)
+                            .height(41.dp)
+                            .width(78.dp)
+                            .background(animateColor)
+                            .padding(1.dp)
+                            .clickable(onClick = {
+                                takeAway = !takeAway
+                            })
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = 14.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            BasicText(
+                                text = "OFF",
+                                style = TextStyle(
+                                    color = Color(0x991F1F1F),
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = Urbanist,
+                                    letterSpacing = 0.25.sp
+                                )
+                            )
+                            BasicText(
+                                text = "ON",
+                                style = TextStyle(
+                                    color = Color(0x99FFFFFF),
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 10.sp,
+                                    letterSpacing = 0.25.sp
+                                )
+                            )
+                        }
+                        Image(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .rotate(animateRotation)
+                                .align(animateTakeAwayPosition),
+                            painter = painterResource(coffeeCups[coffeeId].cupTop),
+                            contentDescription = "Coffee Top"
+                        )
+                    }
+                    BasicText(
+                        "Take Away",
                         style = TextStyle(
-                            color = Color(0xDEFFFFFF),
-                            fontSize = 16.sp,
+                            color = Color(0xB31F1F1F),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
                             fontFamily = Urbanist,
                             letterSpacing = 0.25.sp
                         )
                     )
-                    Icon(
-                        modifier = Modifier.rotate(180f),
-                        imageVector = ImageVector.vectorResource(R.drawable.arrow_right_04),
-                        contentDescription = "Coffee Vector",
-                        tint = Color(0xDEFFFFFF)
-                    )
+                }
+                Box(
+                    Modifier
+                        .offset(y = animateButtonPosition)
+                        .padding(bottom = 50.dp)
+                        .align(Alignment.CenterHorizontally)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .sharedElement(
+                                sharedContentState = rememberSharedContentState(key = "button/continue"),
+                                animatedVisibilityScope = animatedVisibilityScope
+                            )
+                            .dropShadow(
+                                shape = CircleShape,
+                                color = Color.Black.copy(0.24f),
+                                offsetY = 6.dp,
+                                offsetX = 0.dp,
+                                blur = 12.dp
+                            )
+                            .clip(CircleShape)
+                            .background(Color(0xFF1f1f1f))
+                            .padding(vertical = 16.dp, horizontal = 32.dp)
+                            .clickable(onClick = onNavigateSnack),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Take snack",
+                            style = TextStyle(
+                                color = Color(0xDEFFFFFF),
+                                fontSize = 16.sp,
+                                fontFamily = Urbanist,
+                                letterSpacing = 0.25.sp
+                            )
+                        )
+                        Icon(
+                            modifier = Modifier.rotate(180f),
+                            imageVector = ImageVector.vectorResource(R.drawable.arrow_right_04),
+                            contentDescription = "Coffee Vector",
+                            tint = Color(0xDEFFFFFF)
+                        )
+                    }
                 }
             }
-        }
         }
     }
 }
