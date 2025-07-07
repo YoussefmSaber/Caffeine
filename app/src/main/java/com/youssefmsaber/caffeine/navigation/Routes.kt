@@ -22,5 +22,5 @@ import kotlinx.serialization.Serializable
     object ChoseSnack
 
     @Serializable
-    data class Snack(val snackId: Int)
+    data class Snack(val snackImageId: Int)
 
