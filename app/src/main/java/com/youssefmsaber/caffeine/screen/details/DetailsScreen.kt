@@ -5,17 +5,10 @@ import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.core.EaseIn
-import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.EaseOut
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -45,7 +38,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,7 +58,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.youssefmsaber.caffeine.R
@@ -80,7 +71,6 @@ import com.youssefmsaber.caffeine.screen.details.composable.SizeSwitchItem
 import com.youssefmsaber.caffeine.screen.modifier.dropShadow
 import com.youssefmsaber.caffeine.ui.theme.Gray
 import com.youssefmsaber.caffeine.ui.theme.Urbanist
-import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable

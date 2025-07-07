@@ -132,10 +132,10 @@ fun ChooseSnackContent(
                 (verticalPager.currentPage - snackId) + verticalPager.currentPageOffsetFraction
 
             val rotate = lerp(
-                    if (pageOffsetFraction < 0f) -8f else if (pageOffsetFraction > 0) -8f else 0f,
-                    0f,
-                    1f - pageOffsetFraction.coerceIn(-2f, 1f)
-                )
+                if (pageOffsetFraction < 0f) -8f else if (pageOffsetFraction > 0) -8f else 0f,
+                0f,
+                1f - pageOffsetFraction.coerceIn(-2f, 1f)
+            )
             val offsetX = lerp(
                 start = if (pageOffsetFraction < 0f) ((pageOffsetFraction.absoluteValue).pow(3) * -64f)
                 else if (pageOffsetFraction > 0) ((pageOffsetFraction.absoluteValue).pow(3) * -64)
