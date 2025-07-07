@@ -349,7 +349,7 @@ private fun OrderDoneContent(
 
 @Preview
 @Composable
-private fun OrderDonePreview(modifier: Modifier = Modifier) {
+private fun OrderDonePreview() {
 //    OrderDoneContent(
 //        coffeeId = 1,
 //        coffeeSize = CoffeeSize.Small,

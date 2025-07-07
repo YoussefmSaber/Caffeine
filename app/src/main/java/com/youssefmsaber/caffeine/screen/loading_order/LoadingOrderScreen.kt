@@ -251,7 +251,7 @@ private fun LoadingOrderContent(
 
 @Preview
 @Composable
-private fun LoadingOrderPreview(modifier: Modifier = Modifier) {
+private fun LoadingOrderPreview() {
 //    LoadingOrderContent(
 //        coffeeId = 1,
 //        coffeeSize = CoffeeSize.Large,

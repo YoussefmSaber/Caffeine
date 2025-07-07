@@ -76,8 +76,7 @@ private fun HomeScreenContent(
     onItemClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val horizontalPager =
-        rememberPagerState(initialPage = 3, pageCount = { coffeeCups.size })
+    val horizontalPager = rememberPagerState(initialPage = 3, pageCount = { coffeeCups.size })
         with(sharedTransitionScope) {
             Column(
                 modifier = modifier

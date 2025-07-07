@@ -58,7 +58,6 @@ import kotlin.math.pow
 fun SharedTransitionScope.ChoseSnackScreen(
     animatedVisibilityScope: AnimatedVisibilityScope,
     onSnackChosen: (Int) -> Unit,
-    modifier: Modifier = Modifier
 ) {
     ChooseSnackContent(
         animatedVisibilityScope = animatedVisibilityScope,
