@@ -1,5 +1,6 @@
-package com.youssefmsaber.caffeine
+package com.youssefmsaber.caffeine.data
 
+import com.youssefmsaber.caffeine.R
 import com.youssefmsaber.caffeine.model.CoffeeModel
 
 val coffeeCups = listOf<CoffeeModel>(

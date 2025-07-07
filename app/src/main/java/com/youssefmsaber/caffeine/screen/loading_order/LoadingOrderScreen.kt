@@ -45,7 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.youssefmsaber.caffeine.R
-import com.youssefmsaber.caffeine.coffeeCups
+import com.youssefmsaber.caffeine.data.coffeeCups
 import com.youssefmsaber.caffeine.model.CoffeeSize
 import com.youssefmsaber.caffeine.ui.theme.Brown
 import com.youssefmsaber.caffeine.ui.theme.Sniglet

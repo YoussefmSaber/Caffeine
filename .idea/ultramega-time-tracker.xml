@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="UltramegaTimeTracker">
-    <option name="idleTime" value="54361" />
-    <option name="totalRunTime" value="30521104" />
+    <option name="idleTime" value="54386" />
+    <option name="totalRunTime" value="33954835" />
     <option name="totalDebugTime" value="50538" />
-    <option name="todayTime" value="6647" />
+    <option name="todayTime" value="12784" />
     <option name="todayDateTime" value="1751835600000" />
     <option name="classTimeData">
       <map>
@@ -397,10 +397,41 @@
             <map>
               <entry key="AnimateAlignment.kt" value="50" />
               <entry key="DetailsScreen.kt" value="7" />
-              <entry key="HomeScreen.kt" value="108" />
+              <entry key="HomeScreen.kt" value="480" />
               <entry key="NavGraph.kt" value="43" />
-              <entry key="OrderDoneScreen.kt" value="842" />
+              <entry key="OrderDoneScreen.kt" value="856" />
+              <entry key="Pager.kt" value="75" />
               <entry key="SharedTransitionScope.kt" value="42" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 17">
+          <value>
+            <map>
+              <entry key="ChoseSnackScreen.kt" value="1703" />
+              <entry key="CoffeeCups.kt" value="19" />
+              <entry key="Color.kt" value="6" />
+              <entry key="DropShadow.kt" value="47" />
+              <entry key="HomeScreen.kt" value="106" />
+              <entry key="NavGraph.kt" value="2" />
+              <entry key="OrderDoneScreen.kt" value="11" />
+              <entry key="Snacks.kt" value="141" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 18">
+          <value>
+            <map>
+              <entry key="ChoseSnackScreen.kt" value="2398" />
+              <entry key="NavGraph.kt" value="10" />
+            </map>
+          </value>
+        </entry>
+        <entry key="2025-07-07 19">
+          <value>
+            <map>
+              <entry key="ChoseSnackScreen.kt" value="1204" />
+              <entry key="HomeScreen.kt" value="9" />
             </map>
           </value>
         </entry>

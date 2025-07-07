@@ -60,7 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.youssefmsaber.caffeine.R
-import com.youssefmsaber.caffeine.coffeeCups
+import com.youssefmsaber.caffeine.data.coffeeCups
 import com.youssefmsaber.caffeine.model.CoffeeLevel
 import com.youssefmsaber.caffeine.model.CoffeeSize
 import com.youssefmsaber.caffeine.screen.composable.TopApp
