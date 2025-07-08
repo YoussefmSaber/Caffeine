@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.youssefmsaber.caffeine.model.CoffeeModel
 import com.youssefmsaber.caffeine.screen.chose_snack.ChoseSnackScreen
 import com.youssefmsaber.caffeine.screen.details.DetailsScreen
 import com.youssefmsaber.caffeine.screen.home.HomeScreen
@@ -22,51 +21,94 @@ fun NavGraph(navController: NavHostController) {
     SharedTransitionLayout {
         NavHost(
             navController = navController,
-            startDestination = Routes.OnBoarding
+            startDestination = OnBoarding
         ) {
-            composable<Routes.OnBoarding> {
+            composable<OnBoarding> {
                 OnBoardingScreen(
-                    animatedVisibilityScope = this@composable
+                    animatedVisibilityScope = this@composable,
+                    navigateOnClick = {
+                        navController.navigate(Home)
+                    }
                 )
             }
-            composable<Routes.Home> {
-                HomeScreen(animatedVisibilityScope = this@composable)
-            }
-            composable<Routes.Details> {
-                val args = it.toRoute<Routes.Details>()
-                val coffee = CoffeeModel(
-                    imageId = args.imageId,
-                    name = args.name
+            composable<Home> {
+                HomeScreen(
+                    animatedVisibilityScope = this@composable,
+                    navigateToDetails = { coffeeId ->
+                        navController.navigate(Details(coffeeId))
+                    }
                 )
+            }
+            composable<Details> {
+                val args = it.toRoute<Details>()
                 DetailsScreen(
                     animatedVisibilityScope = this@composable,
-                    coffee = coffee
+                    coffeeId = args.coffeeId,
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    },
+                    onOrderFinish = { coffeeId, coffeeSize ->
+                        navController.navigate(LoadingOrder(coffeeId, coffeeSize))
+                    }
                 )
             }
-            composable<Routes.LoadingOrder> {
-                val args = it.toRoute<Routes.LoadingOrder>()
+            composable<LoadingOrder> {
+                val args = it.toRoute<LoadingOrder>()
                 LoadingOrderScreen(
                     animatedVisibilityScope = this@composable,
-                    coffeeImageId = args.imageId,
-                    coffeeSize = args.size
+                    coffeeId = args.coffeeId,
+                    coffeeSize = args.size,
+                    onNavigate = {
+                        navController.navigate(
+                            OrderDone(
+                                coffeeId = args.coffeeId,
+                                size = args.size
+                            )
+                        )
+                    }
                 )
             }
-            composable<Routes.OrderDone> {
-                val args = it.toRoute<Routes.OrderDone>()
+            composable<OrderDone> {
+                val args = it.toRoute<OrderDone>()
                 OrderDoneScreen(
                     animatedVisibilityScope = this@composable,
-                    coffeeImageId = args.imageId,
-                    coffeeSize = args.size
+                    coffeeId = args.coffeeId,
+                    coffeeSize = args.size,
+                    onNavigateBack = {
+                        navController.navigate(Home)
+                    },
+                    onNavigateSnack = {
+                        navController.navigate(ChoseSnack)
+                    }
                 )
             }
-            composable<Routes.ChoseSnack> {
-                ChoseSnackScreen(animatedVisibilityScope = this@composable)
+            composable<ChoseSnack> {
+                ChoseSnackScreen(
+                    animatedVisibilityScope = this@composable,
+                    onSnackChosen = {
+                        navController.navigate(Snack(it))
+                    },
+                    onCloseClick = {
+                        navController.navigate(Home) {
+                            popUpTo(Home) {
+                                inclusive = true
+                            }
+                        }
+                    }
+                )
             }
-            composable<Routes.Snack> {
-                val args = it.toRoute<Routes.Snack>()
+            composable<Snack> {
+                val args = it.toRoute<Snack>()
                 SnackScreen(
                     animatedVisibilityScope = this@composable,
-                    imageId = args.imageId
+                    imageId = args.snackImageId,
+                    onNavigateBack = {
+                        navController.navigate(Home) {
+                            popUpTo(Home) {
+                                inclusive = true
+                            }
+                        }
+                    }
                 )
             }
         }

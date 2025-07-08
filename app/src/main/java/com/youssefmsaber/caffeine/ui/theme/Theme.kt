@@ -2,6 +2,7 @@ package com.youssefmsaber.caffeine.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -10,6 +11,8 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowInsetsControllerCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -49,10 +52,20 @@ fun CaffeineTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-
+    UpdateStatusBarIconsForTheme(darkTheme)
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
         content = content
     )
+}
+
+@Composable
+private fun UpdateStatusBarIconsForTheme(darkTheme: Boolean) {
+    val isDarkIcons = darkTheme
+    val view = LocalView.current
+    val window = (view.context as? ComponentActivity)?.window ?: return
+    WindowInsetsControllerCompat(window, view).apply {
+        isAppearanceLightStatusBars = isDarkIcons
+    }
 }
