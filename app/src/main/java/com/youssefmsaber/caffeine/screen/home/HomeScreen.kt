@@ -124,7 +124,7 @@ private fun HomeScreenContent(
                     )
                 )
                 BasicText(
-                    text = "Hamsa ☀",
+                    text = "Youssef ☀",
                     style = TextStyle(
                         color = Color(0xFF3B3B3B),
                         fontFamily = Urbanist,
